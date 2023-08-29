@@ -34,8 +34,4 @@ jobs:
         push: true
         tags: putraarengga/ci:latest
 
-    - name: Run Docker container on Raspberry Pi
-      uses: crazy-max/ghaction-docker-compose@v2
-      with:
-        compose-file: docker-compose.yml
-        services: led-blink
+    
