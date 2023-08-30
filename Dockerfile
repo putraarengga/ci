@@ -1,8 +1,10 @@
-FROM python:3
+FROM balenalib/raspberry-pi-debian:latest
 
-COPY control_led.py /app/
+RUN apt-get update && apt-get install -y python3 python3-pip
+
+COPY . /app
 WORKDIR /app
 
-RUN pip install RPi.GPIO
+RUN pip3 install -r requirements.txt
 
-CMD ["python", "control_led.py"]
+CMD ["python3", "control_led.py"]
