@@ -27,9 +27,8 @@ jobs:
     - name: Build and Push Docker Image
       run: |
         docker buildx create --use
-        docker buildx build --platform linux/arm/v7 -t putraarengga/ci:latest -t putraarengga/ci:{{ github.sha }} .
+        docker buildx build --platform linux/arm/v7 -t putraarengga/ci:latest .
         docker push putraarengga/ci:latest
-        docker push putraarengga/ci:{{ github.sha }}
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
