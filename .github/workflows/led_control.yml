@@ -24,7 +24,7 @@ jobs:
             pip install -r requirements.txt 
             pytest control_led.py 
   build:
-  needs: test  # Specify that "build" depends on "test" job
+    needs: test  # Specify that "build" depends on "test" job
     runs-on: ubuntu-latest
     
     steps:
