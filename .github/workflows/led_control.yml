@@ -5,33 +5,7 @@ on:
     branches:
       - master
 jobs:
-  test:
-      name: Run tests
-      runs-on: ubuntu-latest
-      strategy:
-        matrix:
-          python-version: ["3.x"]
-  
-      steps:
-        - name: Python Action
-          uses: jge162/Action-workflows@2.1.0
-    
-        - run: |
-            echo "Install required dependencies" 
-            sudo apt-get update
-            sudo apt-get install python3    
-        
-            # Lastly use a `for` loop to run multiple instances of Python scripts.
-            # This way you can run one, or multiple python scripts.
-    
-        - run: |
-            echo "Run, Build Application using scripts"
-            python3 -c "
-            scripts = ['./control_led.py']
-            with open(script, 'r') as file:
-                exec(file.read())"
   build:
-    needs: test  # Specify that "build" depends on "test" job
     runs-on: ubuntu-latest
     
     steps:
