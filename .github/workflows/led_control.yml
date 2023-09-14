@@ -19,7 +19,7 @@ jobs:
               base_image: raspios_lite:latest
               commands: |
                 yes |sudo apt-get install  python3-pip
-                pip install pytest pytest-md pytest-emoji
+                pip install pytest pytest-md pytest-emoji fake_rpi
                 pip3 install RPi.GPIO
                 pytest control_led.py 
   build:
