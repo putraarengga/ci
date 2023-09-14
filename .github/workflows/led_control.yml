@@ -14,17 +14,14 @@ jobs:
   
         steps:
           - uses: actions/checkout@v3
-          - name: Set up Python ${{ matrix.python-version }}
-            uses: actions/setup-python@v4
+          - uses: pguyot/arm-runner-action@v2
             with:
-              python-version: ${{ matrix.python-version }}
-          - name: Install dependencies
-            run: pip install pytest pytest-md pytest-emoji fake_rpi
-          - uses: pavelzw/pytest-action@v2
-            with:
-              emoji: false
-              verbose: false
-              job-summary: true
+              base_image: raspios_lite:latest
+              commands: |
+                yes |sudo apt-get install  python3-pip
+                pip install pytest pytest-md pytest-emoji
+                pip3 install RPi.GPIO
+                pytest control_led.py 
   build:
     runs-on: ubuntu-latest
     
