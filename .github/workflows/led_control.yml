@@ -19,8 +19,9 @@ jobs:
           with:
             python-version: ${{ matrix.python-version }}
         - name: Install dependencies
-          run: | pip install pytest pytest-md pytest-emoji 
-          pytest control_led.py 
+          run: | 
+            pip install pytest pytest-md pytest-emoji 
+            pytest control_led.py 
   build:
     runs-on: ubuntu-latest
     
