@@ -21,7 +21,7 @@ jobs:
         - name: Install dependencies
           run: | 
             pip install pytest pytest-md pytest-emoji
-            pip install -r requirements.txt 
+            pip3 install RPi.GPIO
             pytest control_led.py 
   build:
     needs: test  # Specify that "build" depends on "test" job
