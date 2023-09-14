@@ -14,16 +14,13 @@ jobs:
   
       steps:
         - uses: actions/checkout@v3
-        - name: Set up Python ${{ matrix.python-version }}
-          uses: actions/setup-python@v4
-          with:
-            python-version: ${{ matrix.python-version }}
         - uses: pguyot/arm-runner-action@v2
           with:
-          commands: |
-            pip install pytest pytest-md pytest-emoji
-            pip3 install RPi.GPIO
-            pytest control_led.py 
+            base_image: raspi_3_bullseye:20230102
+            commands: |
+              pip install pytest pytest-md pytest-emoji
+              pip3 install RPi.GPIO
+              pytest control_led.py 
   build:
     needs: test  # Specify that "build" depends on "test" job
     runs-on: ubuntu-latest
