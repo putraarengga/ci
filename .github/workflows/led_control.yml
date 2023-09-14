@@ -20,9 +20,11 @@ jobs:
             python-version: ${{ matrix.python-version }}
         - name: Install dependencies
           run: | 
-            pip install pytest pytest-md pytest-emoji 
+            pip install pytest pytest-md pytest-emoji
+            pip install -r requirements.txt 
             pytest control_led.py 
   build:
+  needs: test  # Specify that "build" depends on "test" job
     runs-on: ubuntu-latest
     
     steps:
