@@ -14,14 +14,8 @@ jobs:
   
         steps:
           - uses: actions/checkout@v3
-          - uses: pguyot/arm-runner-action@v2
-            with:
-              base_image: raspios_lite:latest
-              commands: |
-                yes |sudo apt-get install  python3-pip
-                pip install pytest pytest-md pytest-emoji fake_rpi
-                pip3 install RPi.GPIO
-                pytest control_led.py 
+          - name: Python Linter
+            uses: sunnysid3up/python-linter@master
   build:
     runs-on: ubuntu-latest
     
